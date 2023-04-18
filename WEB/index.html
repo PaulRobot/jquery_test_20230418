@@ -5,16 +5,66 @@
     <title>Title</title>
 
     <!-css->
+    <style>
+        .myli{
+            color: red;
+        }
+        .myli2{
+            color: blueviolet;
+        }
+    </style>
 </head>
 <body>
-
+<ul id = t1>
+    <li>A</li>
+    <li>C</li>
+    <li>B</li>
+</ul>
+<ul id = t2>
+    <li>A</li>
+    <li>C</li>
+    <li>B</li>
+</ul>
+<ul id = t3>
+    <button id = "btn1-1">1-1</button>
+</ul>
 
 <!-js->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script type="text/javascript">
     $(function (){
-        console.log("hello")
+        console.log("hello");
+        $("#t1 > li").addClass("myli");
+        $("#t2 > li").removeClass("myli").addClass("myli2");
+
+        $("#t1").empty();
+        for(var i=0;i<10;i++){
+            var cls = 'myli';
+            if(i%2==0){cls= 'myli2'}
+            $("#t1").append("<li class="+cls+">"+i+"</li>");
+        }
+        $("#t1").append();
+
+
+        $("#btn1-1").bind("click",btnOnClick);
+        $("#btn1-1").hover(btnOnHoverIn,btnOnHoverOut);
+
+        for (var j=0;j<7;j++){
+            for (var k=0;k<4;k++){
+               $("#t3").append("<button>"+j+"-"+k+"</button>");
+            }
+        }
+
     });
+    function btnOnClick(){
+        console.log("Click");
+    }
+    function btnOnHoverIn(){
+        console.log("In");
+    }
+    function btnOnHoverOut(){
+        console.log("Out");
+    }
 </script>
 </body>
 </html>
